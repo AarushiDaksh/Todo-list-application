@@ -88,7 +88,7 @@ const Signup = () => {
               </p>
             )}
 
-            {/* Button row (just button centered here) */}
+         
             <div className="cute-footer-row" style={{ justifyContent: "flex-end" }}>
               <button
                 type="submit"
