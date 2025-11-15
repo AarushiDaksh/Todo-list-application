@@ -1,0 +1,117 @@
+import { useForm } from "react-hook-form";
+import { z } from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useMutation } from "@tanstack/react-query";
+import { signup } from "../api/auth";
+import { useAuthStore } from "../store/authStore";
+import { Link, useNavigate } from "react-router-dom";
+import { FaUser, FaLock } from "react-icons/fa";
+
+import "../index.css";
+
+const schema = z.object({
+  email: z.string().email(),
+  password: z.string().min(4),
+});
+
+type FormValues = z.infer<typeof schema>;
+
+const Signup = () => {
+  const navigate = useNavigate();
+  const setAuth = useAuthStore((s) => s.setAuth);
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<FormValues>({
+    resolver: zodResolver(schema),
+  });
+
+  const mutation = useMutation({
+    mutationFn: signup,
+    onSuccess: (data) => {
+      setAuth(data.user, data.token);
+      navigate("/todos");
+    },
+  });
+
+  const onSubmit = (values: FormValues) => mutation.mutate(values);
+
+  return (
+    <section id="login">
+      <div className="cute-login-page">
+        <div className="cute-login-card">
+       
+          <h1 className="cute-login-title">
+            <span className="letter l1">S</span>
+            <span className="letter l2">i</span>
+            <span className="letter l3">g</span>
+            <span className="letter l4">n</span>
+            <span className="letter dash">-</span>
+            <span className="letter l5">U</span>
+            <span className="letter l2">p</span>
+          </h1>
+
+          <form onSubmit={handleSubmit(onSubmit)} className="cute-login-form">
+          
+           
+             <div className="cute-input-wrapper">
+            <span className="icon">👩🏻‍💻</span>
+            <input
+              className="cute-input"
+              placeholder="Email"
+              {...register("email")}
+            />
+          </div>
+            {errors.email && (
+              <span className="cute-error">{errors.email.message}</span>
+            )}
+
+           
+            <div className="cute-input-wrapper">
+            <span className="icon">🔒</span>
+            <input
+              className="cute-input"
+              type="password"
+              placeholder="Password"
+              {...register("password")}
+            />
+          </div>
+            {errors.password && (
+              <span className="cute-error">{errors.password.message}</span>
+            )}
+
+            
+            {mutation.isError && (
+              <p className="cute-error-banner">
+                {(mutation.error as any)?.response?.data?.message ||
+                  "Something went wrong. Please try again."}
+              </p>
+            )}
+
+            {/* Button row (just button centered here) */}
+            <div className="cute-footer-row" style={{ justifyContent: "flex-end" }}>
+              <button
+                type="submit"
+                className="cute-arrow-btn"
+                disabled={mutation.isPending}
+              >
+                {mutation.isPending ? "…" : "➜"}
+              </button>
+            </div>
+          </form>
+
+          <p className="cute-bottom-text">
+            Already have an account?{" "}
+            <Link to="/login" className="cute-link strong">
+              Log in
+            </Link>
+          </p>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default Signup;
