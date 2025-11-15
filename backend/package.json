@@ -7,7 +7,6 @@
   "build": "node ./node_modules/typescript/bin/tsc",
   "start": "node dist/app.js"
 }
-
 ,
   "keywords": [],
   "author": "",

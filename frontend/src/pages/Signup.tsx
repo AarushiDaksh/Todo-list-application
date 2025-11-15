@@ -5,9 +5,7 @@ import { useMutation } from "@tanstack/react-query";
 import { signup } from "../api/auth";
 import { useAuthStore } from "../store/authStore";
 import { Link, useNavigate } from "react-router-dom";
-import { FaUser, FaLock } from "react-icons/fa";
-
-import "../index.css";
+import  "../index.css";
 
 const schema = z.object({
   email: z.string().email(),

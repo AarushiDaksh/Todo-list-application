@@ -11,7 +11,7 @@ api.interceptors.request.use((config: InternalAxiosRequestConfig) => {
   const token = useAuthStore.getState().token;
 
   if (token) {
-    // Don't reassign headers, just mutate
+    
     const headers = config.headers as any;
     headers.Authorization = `Bearer ${token}`;
   }

@@ -4,11 +4,10 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useMutation } from "@tanstack/react-query";
 import { resetPasswordApi } from "../api/auth";
 import { Link, useNavigate } from "react-router-dom";
-import { FaKey, FaLock } from "react-icons/fa";
 import "../index.css";
 
 const schema = z.object({
-  token: z.string().min(4),      // if you keep long token, change min back to 10
+  token: z.string().min(4),      
   password: z.string().min(4),
 });
 
