@@ -15,16 +15,12 @@ const PORT = process.env.PORT || 5000;
 
 const rawClient = process.env.CLIENT_URL || "https://todo-list-application-ten-gamma.vercel.app";
 
-<<<<<<< HEAD
 let CLIENT_ORIGIN = rawClient;
 try {
   CLIENT_ORIGIN = new URL(rawClient).origin;
 } catch {
   CLIENT_ORIGIN = rawClient;
 }
-=======
-const CLIENT_URL = process.env.CLIENT_URL || "https://todo-list-application-ten-gamma.vercel.app/login";
->>>>>>> cf7277573539faf8aedd052e17a5b831d21f34b1
 
 const allowedOrigins = [
   "http://localhost:5173",
