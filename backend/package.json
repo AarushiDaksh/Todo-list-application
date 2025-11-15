@@ -2,11 +2,11 @@
   "name": "backend",
   "version": "1.0.0",
   "main": "app.ts",
-  "scripts": {
-    "dev": "ts-node-dev --respawn --transpile-only src/app.ts",
-    "build": "tsc",
-    "start": "node app.ts"
-  },
+  ""scripts": {
+  "dev": "ts-node-dev --respawn --transpile-only src/app.ts",
+  "build": "node ./node_modules/typescript/bin/tsc"
+}
+,
   "keywords": [],
   "author": "",
   "license": "ISC",
