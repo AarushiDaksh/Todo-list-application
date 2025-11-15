@@ -7,7 +7,6 @@ const API_URL =
   "https://todo-list-application-backend0.onrender.com/api";
 
 export const api = axios.create({
-<<<<<<< HEAD
   baseURL: API_URL,
 });
 
@@ -19,7 +18,7 @@ api.interceptors.request.use((config: InternalAxiosRequestConfig) => {
   }
 
   if (token) {
-    (config.headers as AxiosRequestHeaders)["Authorization"] = `Bearer ${token}`;
+    (config.headers as AxiosRequestHeaders).Authorization = `Bearer ${token}`;
   }
 
   return config;
