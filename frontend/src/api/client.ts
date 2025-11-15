@@ -7,7 +7,11 @@ const API_URL =
   "https://todo-list-application-backend0.onrender.com/api";
 
 export const api = axios.create({
+<<<<<<< HEAD
   baseURL: API_URL,
+=======
+  baseURL: import.meta.env.VITE_API_URL || "https://todo-list-application-backend0.onrender.com/api",
+>>>>>>> cf7277573539faf8aedd052e17a5b831d21f34b1
 });
 
 api.interceptors.request.use((config: InternalAxiosRequestConfig) => {
