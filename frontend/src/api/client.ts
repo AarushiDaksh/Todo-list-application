@@ -3,7 +3,7 @@ import type { InternalAxiosRequestConfig } from "axios";
 import { useAuthStore } from "../store/authStore";
 
 export const api = axios.create({
-  baseURL: import.meta.env.VITE_API_URL || "http://localhost:5000/api",
+  baseURL: import.meta.env.VITE_API_URL || "https://todo-list-application-backend0.onrender.com/api",
 });
 
 // Attach JWT token to every request if available
