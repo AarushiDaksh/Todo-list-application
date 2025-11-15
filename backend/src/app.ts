@@ -14,7 +14,7 @@ const app: Application = express();
 const PORT = process.env.PORT || 5000;
 
 
-const CLIENT_URL = process.env.CLIENT_URL || "https://todo-list-application-wheat.vercel.app";
+const CLIENT_URL = process.env.CLIENT_URL || "https://todo-list-application-ten-gamma.vercel.app/login";
 
 
 app.use(
