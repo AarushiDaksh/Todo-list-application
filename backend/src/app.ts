@@ -12,6 +12,10 @@ dotenv.config();
 
 const app: Application = express();
 const PORT = process.env.PORT || 5000;
+const HOST = "0.0.0.0";
+
+
+
 
 const rawClient = process.env.CLIENT_URL || "https://todo-list-application-ten-gamma.vercel.app";
 
@@ -58,7 +62,7 @@ mongoose
   .connect(process.env.MONGO_URI as string)
   .then(() => {
     console.log("MongoDB connected");
-    app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+      console.log(`Server listening on http://${HOST}:${PORT}`);
   })
   .catch((err) => {
     console.error("Mongo connection error", err);
