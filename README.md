@@ -1,4 +1,4 @@
-# Todo List Application.
+# Todo List Application
 
 This project is a full-stack Todo List application built with **React**,
 **TypeScript**, **Node.js**, and **MongoDB**.\
